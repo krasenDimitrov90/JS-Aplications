@@ -3,12 +3,15 @@ import { userNavigation } from './user-rendering/user.js';
 
 
 const homeSection = document.getElementById('home-page');
-const navigationElmnts = document.querySelectorAll('.nav-link')
+export const navigationElmnts = document.querySelectorAll('.nav-link')
 
-const user = localStorage.getItem('user');
 
 export function renderHome() {
+
+    const user = localStorage.getItem('user');
+
     homeSection.style.display = 'block';
+
     if (user) {
         userNavigation(navigationElmnts);
     } else {
@@ -16,4 +19,4 @@ export function renderHome() {
     }
 }
 
-renderHome()
+// renderHome()
