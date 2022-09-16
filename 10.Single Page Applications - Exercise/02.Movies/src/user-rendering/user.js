@@ -1,6 +1,5 @@
 
 const moviesSections = document.querySelector('#movie-example');
-const user = JSON.parse(localStorage.getItem('user'));
 const addMovieBtn = document.getElementById('add-movie-button');
 const welcomeMsg = document.getElementById('welcome-msg');
 
@@ -22,7 +21,6 @@ export function userNavigation(navigation) {
             x.style.display = 'none';
         }
     })
-    
     showWelcomeMsg()
 
     addMovieBtn.style.display = 'block';
