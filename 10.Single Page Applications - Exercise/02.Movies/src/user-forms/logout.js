@@ -1,4 +1,4 @@
-import { renderHome } from '../home.js';
+import { renderHome } from '../sections/home.js';
 
 export function renderLogout() {
     localStorage.removeItem('user');
