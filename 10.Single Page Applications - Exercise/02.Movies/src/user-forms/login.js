@@ -1,5 +1,6 @@
 import { router } from '../router.js';
 import { login } from '../requests.js';
+import { saveUser } from '../auth.js';
 
 const loginSection = document.getElementById('form-login');
 
@@ -14,7 +15,7 @@ loginForm.addEventListener('submit', (e) => {
 
     login({email, password})
         .then(data => {
-            localStorage.setItem('user', JSON.stringify(data));
+            saveUser(JSON.stringify(data));
             alert('Succesfuly logged!');
             router('Movies');
         })

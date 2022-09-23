@@ -1,5 +1,6 @@
 import { router } from '../router.js';
 import { register } from '../requests.js';
+import { saveUser } from '../auth.js';
 
 const registerSection = document.getElementById('form-sign-up');
 const registerForm = document.getElementById('register-form');
@@ -19,7 +20,7 @@ registerForm.addEventListener('submit', (e) => {
 
     register({email, password})
         .then(user => {
-            localStorage.setItem('user', JSON.stringify(user));
+            saveUser(JSON.stringify(user));
             alert('Succesfuly registered!');
             router('Movies');
         })

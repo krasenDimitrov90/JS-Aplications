@@ -1,6 +1,7 @@
 import { renderHome } from '../sections/home.js';
+import { deleteUser  } from '../auth.js';
 
 export function renderLogout() {
-    localStorage.removeItem('user');
+    deleteUser();
     renderHome();
 }
