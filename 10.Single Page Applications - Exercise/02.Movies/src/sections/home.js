@@ -1,7 +1,6 @@
-import { renderDetails } from './details.js';
-import { hideContent } from '../router.js';
 import { navigation } from "./navigation.js";
 import { renderMovies } from "./movies.js";
+import { router } from '../router.js';
 
 const homeSection = document.getElementById('home-page');
 const movieSection = document.getElementById('movie');
@@ -10,8 +9,7 @@ movieSection.addEventListener('click', (e) => {
 
     if (e.target.tagName === 'BUTTON') {
         e.preventDefault();
-        hideContent();
-        renderDetails(e.target.id)
+        router('Details', e.target.id);
     }
 })
 

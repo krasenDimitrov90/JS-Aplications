@@ -2,13 +2,13 @@ const baseURL = 'http://localhost:3030';
 
 export const API = {
     get(url, id) {
-        
+        let currentURL = `${baseURL}${url}`;
+
         if (id) {
-            return fetch(`${baseURL}${url}/${id}`)
-            .then(res => res.json())
+            currentURL += `/${id}`;
         }
         
-        return fetch(`${baseURL}${url}`)
+        return fetch(currentURL)
             .then(res => res.json())
     },
     post(url, method, data, token) {
