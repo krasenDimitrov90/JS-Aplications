@@ -2,15 +2,13 @@ import { render } from 'https://unpkg.com/lit-html?module';
 import { getStudents } from "./request.js";
 import { tableTemplate } from './templates.js';
 
+const table = document.querySelector('.container tbody');
+const searchField = document.getElementById('searchField');
 const studentsData = Object.values(await getStudents());
+
 studentsData.forEach(s => s.active = false);
 
-const table = document.querySelector('.container tbody');
-
-
 render(tableTemplate(studentsData), table)
-
-const searchField = document.getElementById('searchField');
 
 document.getElementById('searchBtn').addEventListener('click', searchHendler);
 
@@ -23,8 +21,6 @@ function searchHendler(e) {
    )
       
    render(tableTemplate(studentsData), table);
-
    studentsData.forEach(s => s.active = false);
-
    searchField.value = '';
 }
