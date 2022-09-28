@@ -17,21 +17,14 @@ document.getElementById('searchBtn').addEventListener('click', searchHendler);
 function searchHendler(e) {
    const searchedValue = searchField.value;
 
-   studentsData.forEach(s =>
-      Object.values(s)
-         .forEach(val => {
-            if (typeof val == 'string' && val.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase())) {
-               s.active = true;
-            }
-         }))
-
+   studentsData.forEach(s => 
+      s.active = Object.values(s).some(val => 
+         typeof val == 'string' && val.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase()))
+   )
+      
    render(tableTemplate(studentsData), table);
 
    studentsData.forEach(s => s.active = false);
 
    searchField.value = '';
 }
-
-console.log(Object.entries(...studentsData));
-
-
