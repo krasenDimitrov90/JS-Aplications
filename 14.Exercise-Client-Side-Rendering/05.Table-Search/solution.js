@@ -8,7 +8,7 @@ const studentsData = Object.values(await getStudents());
 
 studentsData.forEach(s => s.active = false);
 
-render(tableTemplate(studentsData), table)
+render(tableTemplate(studentsData), table);
 
 document.getElementById('searchBtn').addEventListener('click', searchHendler);
 
