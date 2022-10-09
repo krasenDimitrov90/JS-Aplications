@@ -1,0 +1,13 @@
+{
+  "name": "music-app",
+  "version": "1.0.0",
+  "description": "Music App Single Page Application",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha tests/e2e.test.js",
+    "start": "http-server -a localhost -p 3000 -P http://localhost:3000?",
+    "lite": "lite-server"
+  },
+  "author": "",
+  "license": "ISC"
+}
