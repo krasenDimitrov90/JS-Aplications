@@ -2,6 +2,8 @@ import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 import * as api from '../services/requests.js';
 
 const searchHandler = (ctx, e) => {
+
+    ctx.show();
     const input = document.getElementById('search-input');
 
     if (input.value === '') {
@@ -9,6 +11,7 @@ const searchHandler = (ctx, e) => {
     }
     api.searchAlbums(encodeURIComponent(input.value))
         .then(albums => {
+            ctx.hide();
             ctx.render(searchTemplate(ctx, albums, searchResultTemplate))
         })
 }
@@ -66,6 +69,6 @@ const searchTemplate = (ctx, albums, resultTemplate = null) => html`
 
 
 export const renderSearch = (ctx) => {
-
+    ctx.hide()
     ctx.render(searchTemplate(ctx, []));
 }

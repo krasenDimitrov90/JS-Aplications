@@ -4,6 +4,7 @@ import * as api from '../services/requests.js';
 
 const editHandler = (ctx, albumId, e) => {
     e.preventDefault();
+    ctx.show();
 
     const data = Object.fromEntries(new FormData(e.target));
 
@@ -13,7 +14,10 @@ const editHandler = (ctx, albumId, e) => {
     }
 
     api.editAlbum(albumId, data, ctx.user.accessToken)
-        .then(album => ctx.page.redirect(`/details/${album._id}`))
+        .then(album => {
+            ctx.hide();
+            ctx.page.redirect(`/details/${album._id}`)
+        })
 }
 
 const editTemplate = (ctx, album, albumId) => html`
@@ -57,6 +61,9 @@ export const renderEdit = (ctx) => {
     const albumId = ctx.params.id;
 
     api.getOneAlbum(albumId)
-        .then(album => ctx.render(editTemplate(ctx, album, albumId)))
+        .then(album => {
+            ctx.hide();
+            ctx.render(editTemplate(ctx, album, albumId))
+        })
     
 }

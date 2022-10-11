@@ -52,4 +52,7 @@ const registerTemplate = (ctx) => html`
     </section>
 `;
 
-export const renderRegister = (ctx) => ctx.render(registerTemplate(ctx));
+export const renderRegister = (ctx) => {
+    ctx.hdie()    
+    ctx.render(registerTemplate(ctx))
+}

@@ -10,7 +10,7 @@ import { createFurnitureView } from './views/create-furniture.js';
 
 
 
-page('/', '/dashboard', dashboardView)
+page('/', '/dashboard', dashboardView);
 page('/dashboard', dashboardView);
 page('/login', loginView);
 page('/register', registerView);

@@ -14,6 +14,7 @@ const homeTemplate = () => html`
 `; 
 
 export const renderHome = (ctx, next) => {
-    
+
+    ctx.hide();
     ctx.render(homeTemplate());
 }

@@ -3,6 +3,7 @@ import * as api from '../services/requests.js';
 
 const createHandler = (ctx, token, e) => {
     e.preventDefault();
+    ctx.show();
 
     const data = Object.fromEntries(new FormData(e.target));
 
@@ -12,7 +13,10 @@ const createHandler = (ctx, token, e) => {
     }
 
     api.createAlbum(data, token)
-        .then(data => ctx.page.redirect('/catalog'))
+        .then(data => {
+            ctx.hide();
+            ctx.page.redirect('/catalog')
+        })
 }
 
 
@@ -53,5 +57,6 @@ const createTemplate = (ctx, token) => html`
 
 export const renderCreate = (ctx) => {
 
+    ctx.hide();
     ctx.render(createTemplate(ctx, ctx.token));
 }

@@ -40,6 +40,7 @@ export const renderDetails = (ctx) => {
     api.getOneAlbum(albumId)
         .then(album => {
             const isOwner = ctx.user._id === album._ownerId;
+            ctx.hide()
             ctx.render(detailsTemplate(album, isOwner));
         })
 

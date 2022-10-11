@@ -39,4 +39,7 @@ const albumsTemplate = (albums, isThereUser) => html`
 
 export const renderCatalog = (ctx) => 
     api.getAllAlbums()
-        .then(albums => ctx.render(albumsTemplate(albums, Boolean(ctx.user))))
+        .then(albums => {
+            ctx.hide();
+            ctx.render(albumsTemplate(albums, Boolean(ctx.user)))
+        })
