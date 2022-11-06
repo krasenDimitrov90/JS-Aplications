@@ -5,7 +5,7 @@ export const createSubmitHandler = (ctx, handler) => {
     return (e) => {
         e.preventDefault();
 
-        const inputElements = e.target.querySelectorAll('input');
+        const inputElements = e.target.querySelectorAll('.input-fields');
         const data = Object.fromEntries(new FormData(e.currentTarget));
 
         refreshInputFields(inputElements);

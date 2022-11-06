@@ -1,0 +1,1 @@
+export const navigateToTop = () => window.scrollTo(0, 0);

@@ -1,17 +1,18 @@
 import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 import * as request from '../services/requests.js';
 
-export const detailsView = (ctx) => {
-    const userId = ctx.user?.id;
+export const detailsView = (ctx, next) => {
+    const userId = ctx.user?._id;
 
     request.getGame(ctx.params.id)
         .then(game => ctx.render(detailsTemplate(userId, game)))
+    next();    
 }
 
-const buttonsTemplate = () => html`
+const buttonsTemplate = (gameId) => html`
     <div class="buttons">
-        <a href="/edit/${game._id}" class="button">Edit</a>
-        <a href="/delete/${game._id}" class="button">Delete</a>
+        <a href="/edit/${gameId}" class="button">Edit</a>
+        <a href="/delete/${gameId}" class="button">Delete</a>
     </div>
 `;
 
@@ -31,8 +32,8 @@ const detailsTemplate = (userId, game) => html`
             <p class="text">
                 ${game.summary}
             </p>
-
-            ${userId ? userId === game._ownerId ? buttonsTemplate() : nothing : nothing}
+                
+            ${userId ? userId === game._ownerId ? buttonsTemplate(game._id) : nothing : nothing}
     
             <!-- Bonus ( for Guests and Users ) -->
             <div class="details-comments">

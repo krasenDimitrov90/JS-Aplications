@@ -1,21 +1,33 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
 
-export const navigationTemplate = () => html`
+
+
+const userTemplates = {
+    guestTemplate: () => html`
+    <div id="guest">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </div>`,
+
+    userTemplate: () => html`
+    <div id="user">
+        <a href="/create">Create Game</a>
+        <a href="/logout">Logout</a>
+    </div>`
+}
+
+const userLinks = (user, templates) =>
+    user ? templates.userTemplate() : templates.guestTemplate();
+
+
+export const navigationTemplate = (user) => html`
     <header>
-        <!-- Navigation -->
         <h1><a class="home" href="/">GamesPlay</a></h1>
         <nav>
             <a href="/catalog">All games</a>
-            <!-- Logged-in users -->
-            <div id="user">
-                <a href="/create">Create Game</a>
-                <a href="/logout">Logout</a>
-            </div>
-            <!-- Guest users -->
-            <div id="guest">
-                <a href="/login">Login</a>
-                <a href="/register">Register</a>
-            </div>
+
+            ${userLinks(user, userTemplates)}
+    
         </nav>
     </header>
 `;

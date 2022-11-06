@@ -1,8 +1,9 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
 
 
-export const createView = (ctx) => {
+export const createView = (ctx, next) => {
     ctx.render(createTemplate());
+    next();
 }
 
 const createTemplate = () => html`

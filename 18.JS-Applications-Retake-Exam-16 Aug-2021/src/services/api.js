@@ -14,6 +14,7 @@ const request = (method, url, data) => {
         })
         .then(data => data)
         .catch((err) => {
+
             err.then(res => alert(res.message))
             throw err
         });
@@ -45,11 +46,12 @@ const handleError = (response) => {
         if (response.status === 403) {
             clearStorage();
         }
-
+        
         throw response.json()
     }
 
     if (response.status === 204) {
+
         return response;
     }
 }

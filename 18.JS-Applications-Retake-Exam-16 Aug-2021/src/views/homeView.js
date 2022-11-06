@@ -2,10 +2,11 @@ import { html } from '../../node_modules/lit-html/lit-html.js';
 import * as request from '../services/requests.js';
 
 
-export const homeView = (ctx) => {
+export const homeView = (ctx, next) => {
 
     request.getRecentGames()
         .then(games => ctx.render(homeTemplate(games)))
+    next();    
 }
 
 const gameCardTemplate = (game) => html`

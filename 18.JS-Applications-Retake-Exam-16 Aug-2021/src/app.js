@@ -8,6 +8,8 @@ import { createView } from "./views/createView.js";
 import { catalogView } from "./views/catalogView.js";
 import { detailsView } from "./views/detailsView.js";
 import { prepareUser } from "./middleWares/prepareUserMiddleWare.js";
+import { editView } from "./views/editView.js";
+import { navigateToTop } from "./middleWares/navigateToTop.js";
 
 
 
@@ -20,5 +22,7 @@ page('/register', registerView);
 page('/create', createView);
 page('/catalog', catalogView);
 page('/details/:id', detailsView);
+page('/edit/:id', editView);
+page(navigateToTop);
 
 page.start();
